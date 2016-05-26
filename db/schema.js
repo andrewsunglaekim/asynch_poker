@@ -36,15 +36,26 @@ var GameSchema = new Schema({
 
 var Card = mongoose.model("Card")
 
-GameSchema.on('init', function(docs){
-  var self = this
-  console.log("hello")
-  _.each(deck.cards, function(card){
-    card = new Card({rank: card.rank, suit: card.suit})
-    console.log(card)
-    self.deck.push(card)
+GameSchema.methods.buildDeck = function(docs){
+  var deck = new Deck()
+  this.deck = _.map(deck.cards, function(card){
+    return new Card({rank: card.rank, suit: card.suit})
   })
-})
+  console.log("deck built")
+}
+
+// GameSchema.post('init', function(doc){
+//   console.log(doc);
+//   console.log("***********")
+//   doc.buildDeck()
+//   var self = docs
+//   console.log("hello")
+//   _.each(deck.cards, function(card){
+//     card = new Card({rank: card.rank, suit: card.suit})
+//     console.log(card)
+//     docs.deck.push(card)
+//   })
+// })
 
 mongoose.model("Player", PlayerSchema)
 mongoose.model("Game", GameSchema)

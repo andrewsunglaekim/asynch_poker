@@ -51,5 +51,7 @@ for(var i = 0; i < NUM_GAMES; i++){
   game.save(function(err){})
 
 }
-
-console.log(game.deck)
+console.log(game)
+game.buildDeck()
+game.save(function(err){})
+console.log(game.deck[51])
