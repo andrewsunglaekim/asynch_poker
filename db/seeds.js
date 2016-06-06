@@ -1,6 +1,6 @@
 require("../helpers/helper")
 require("../constants")
-
+console.log(RANKS)
 var _ =  require('underscore')
 var mongoose = require('mongoose')
 var conn = mongoose.connect('mongodb://localhost/poker')
