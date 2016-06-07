@@ -5,6 +5,7 @@ var conn = mongoose.connect('mongodb://localhost/poker')
 var Card = require("./models/card")
 var Player = require("./models/player")
 var Game = require("./models/game")
+var User = require("./models/user")
 
 var replServer = repl.start({
   prompt: "Express Console > "
@@ -12,4 +13,5 @@ var replServer = repl.start({
 
 replServer.context.Card = Card;
 replServer.context.Player = Player;
+replServer.context.User = User;
 replServer.context.Game = Game;

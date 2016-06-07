@@ -20,7 +20,7 @@ var PlayerSchema = new Schema({
 var UserSchema = new Schema({
   username: String,
   email: String,
-  chips: Number
+  chips: Number,
   activeGames: [PlayerSchema]
 })
 
