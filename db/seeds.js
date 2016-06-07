@@ -7,6 +7,7 @@ var conn = mongoose.connect('mongodb://localhost/poker')
 
 var Card = require("../models/card")
 var Player = require("../models/player")
+var Player = require("../models/user")
 var Game = require("../models/game")
 
 var Deck = require("../models/pokerLogic/deck")
@@ -15,6 +16,7 @@ deck = new Deck()
 Card.remove({}, function(err){})
 Player.remove({}, function(err){})
 Game.remove({}, function(err){})
+User.remove({}, function(err){})
 
 var backendDeck = _.map(deck.cards, function(card){
   card = new Card({rank: card.rank, suit: card.suit})
@@ -23,11 +25,11 @@ var backendDeck = _.map(deck.cards, function(card){
 })
 
 var names = ["bob", "susy", "tom", "mary", "bree", "adriana", "tiffany", "daisy", "ted"]
-var players = _.map(names, function(name){
-  player = new Player({
-    name: name,
-    hand: [backendDeck.shift(), backendDeck.shift()],
-    chips: Math.floor(Math.random()*500),
+var users = _.map(names, function(name){
+  player = new User({
+    username: name,
+    hand: [],
+    chips: Math.floor(Math.random()*5000),
     currentBet: null
   })
   player.save(function(err){})
@@ -47,10 +49,9 @@ for(var i = 0; i < NUM_GAMES; i++){
     pot: Math.floor(Math.random() * 1500),
     currentPlayerID:currentPlayerID
   })
-
   game.save(function(err){})
-
 }
+
 console.log(game)
 game.buildDeck()
 game.save(function(err){})
