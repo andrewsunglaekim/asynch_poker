@@ -1,4 +1,4 @@
-require("../helpers/helper")
+require("../helpers/arrayMethods")
 require("../constants")
 console.log(RANKS)
 var _ =  require('underscore')

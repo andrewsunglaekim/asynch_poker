@@ -1,4 +1,4 @@
-require("./helpers/helper")
+require("./helpers/arrayMethods")
 var repl = require("repl");
 var mongoose = require('mongoose')
 var conn = mongoose.connect('mongodb://localhost/poker')
