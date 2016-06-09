@@ -11,7 +11,7 @@ var usersController = require("./controllers/users")
 var session = require('express-session')
 var app = express()
 
-mongoose.connect('mongodb://localhost/reminders')
+mongoose.connect('mongodb://localhost/poker')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(methodOverride('_method'))

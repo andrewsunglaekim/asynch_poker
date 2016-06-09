@@ -1,3 +1,4 @@
+// TODO: figure out constraints/validations for domain model
 console.log("schema running")
 var mongoose = require('mongoose');
 
