@@ -1,1 +1,12 @@
 {{currentUser.username}}
+
+<div class="pendingAction">
+  {{#each pendingActionGames}}
+    {{name}}
+  {{/each}}
+</div>
+<div class="activeGames">
+  {{#each activeGames}}
+    {{name}}
+  {{/each}}
+</div>

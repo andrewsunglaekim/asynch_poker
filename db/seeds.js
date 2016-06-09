@@ -46,10 +46,10 @@ for(var i = 0; i < NUM_GAMES; i++){
   var players = []
   _.each(random_users, function(user){
     currentPlayer = new Player({
-      name: user.name,
+      name: user.username,
       chips: Math.floor(Math.random() * 500),
       currentBet: null,
-      pendingAction: false
+      pendingAction: null
     })
     user.activeGames.push(currentPlayer)
     user.save(function(){})

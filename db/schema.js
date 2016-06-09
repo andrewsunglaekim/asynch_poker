@@ -15,7 +15,8 @@ var PlayerSchema = new Schema({
   hand: [CardSchema],
   chips: Number,
   currentBet: Number,
-  pendingAction: Boolean
+  pendingAction: String,
+  dealer: Boolean
 })
 
 var UserSchema = new Schema({
