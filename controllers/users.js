@@ -1,13 +1,10 @@
 var User = require("../models/user")
 
 var usersController = {
-  signup: function(req, res){
+  getSignup: function(req, res){
     res.render("users/signup")
   },
-  login: function(req,res){
-    res.render("users/login")
-  },
-  addUser: function(req,res){
+  postSignup: function(req,res){
     var user = new User({
       username: req.body.username,
       email: req.body.email,
@@ -15,8 +12,18 @@ var usersController = {
     })
     user.save(function(err){
       if(!err){
+        req.session.currentUser = user
         res.redirect("/")
       }
+    })
+  },
+  getLogin: function(req,res){
+    res.render("users/login")
+  },
+  postLogin: function(req, res){
+    User.findOne({username: req.body.username}, function(err, user){
+      req.session.currentUser = user
+      res.redirect('/')
     })
   },
   signOut: function(req,res){
