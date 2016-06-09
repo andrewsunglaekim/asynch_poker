@@ -33,5 +33,7 @@ app.listen(4000, function(){
 })
 
 
+app.get('/', staticController.home)
 app.get('/signup', usersController.signup)
+app.post('/addUser', usersController.addUser)
 app.get('/login', usersController.login)
