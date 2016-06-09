@@ -7,6 +7,7 @@ var cmongo  = require('connect-mongo/es5')
 var SMongo  = cmongo(session)
 var methodOverride = require('method-override')
 var staticController = require("./controllers/static")
+var usersController = require("./controllers/users")
 var session = require('express-session')
 var app = express()
 
@@ -17,6 +18,7 @@ app.use(methodOverride('_method'))
 app.set("view engine", "hbs")
 app.use(express.static(__dirname + '/public'))
 
+// TODO: export secret to json to be git ignored
 app.use(session({
   secret: "bob",
   resave: false,
@@ -31,16 +33,5 @@ app.listen(4000, function(){
 })
 
 
-app.get('/', function(req, res, next) {
-  var sess = req.session
-  if (sess.views) {
-    sess.views++
-    res.setHeader('Content-Type', 'text/html')
-    res.write('<p>views: ' + sess.views + '</p>')
-    res.write('<p>expires in: ' + (sess.cookie.maxAge / 1000) + 's</p>')
-    res.end()
-  } else {
-    sess.views = 1
-    res.end('welcome to the session demo. refresh!')
-  }
-})
+app.get('/signup', usersController.signup)
+app.get('/login', usersController.login)
