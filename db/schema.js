@@ -23,11 +23,11 @@ var UserSchema = new Schema({
   username: String,
   email: String,
   chips: Number,
-  activeGames: [PlayerSchema]
+  activeGames: [{ type: Schema.Types.ObjectId, ref: 'Player' }]
 })
 
 var GameSchema = new Schema({
-  players: [PlayerSchema],
+  players: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
   board: [CardSchema],
   deck: [CardSchema],
   pot: Number,
