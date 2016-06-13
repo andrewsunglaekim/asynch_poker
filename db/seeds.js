@@ -1,6 +1,5 @@
 require("../helpers/arrayMethods")
 require("../constants")
-console.log(RANKS)
 var _ =  require('underscore')
 var mongoose = require('mongoose')
 var conn = mongoose.connect('mongodb://localhost/poker')
@@ -73,6 +72,7 @@ _.each(random_users, function(user){
 })
 checkDemoGame.players = players
 checkDemoGame.players.push(demoCheckPlayer)
+checkDemoGame.buildDeck()
 checkDemoGame.save(function(){})
 
 // demo pockets
@@ -105,6 +105,7 @@ _.each(random_users, function(user){
 })
 pocketsDemoGame.players = players
 pocketsDemoGame.players.push(demoPocketsPlayer)
+pocketsDemoGame.buildDeck()
 pocketsDemoGame.save(function(err){
   if(!err){
     console.log("pockets game saved");
@@ -141,6 +142,7 @@ _.each(random_users, function(user){
 })
 flopDemoGame.players = players
 flopDemoGame.players.push(demoFlopPlayer)
+flopDemoGame.buildDeck()
 flopDemoGame.save(function(err){
   if(!err){
     console.log("flop game saved");
@@ -177,6 +179,7 @@ _.each(random_users, function(user){
 })
 turnDemoGame.players = players
 turnDemoGame.players.push(demoTurnPlayer)
+turnDemoGame.buildDeck()
 turnDemoGame.save(function(err){
   if(!err){
     console.log("turn game saved");
@@ -216,6 +219,7 @@ _.each(random_users, function(user){
 })
 riverDemoGame.players = players
 riverDemoGame.players.push(demoRiverPlayer)
+riverDemoGame.buildDeck
 riverDemoGame.save(function(err){
   if(!err){
     console.log("river game saved");

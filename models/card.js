@@ -1,5 +1,6 @@
 var CardSchema = require("../db/schema").CardSchema
 var mongoose = require('mongoose')
+require("../constants")
 
 CardSchema.methods = {
   rankValue: function(){
